@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Version>0.1.0</Version>    
+    <TargetFrameworks>net45;net40;net35;net20;netstandard1.0;netstandard1.3;netstandard2.0;net5.0;net6.0</TargetFrameworks>
+    <!-- <TargetFrameworks>net480;net472;net471;net470;net462;net461;net460;net452;net451;net45;net40;net35;net30;net20;netstandard1.0;netstandard1.1;netstandard1.2;netstandard1.3;netstandard1.4;netstandard1.5;netstandard1.6;netstandard2.0;netstandard2.1;net5.0;net6.0;netcoreapp2.0;netcoreapp2.1;netcoreapp2.2;netcoreapp3.0;netcoreapp3.1</TargetFrameworks>  -->
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackageProjectUrl>https://dev.azure.com/janono-pub/Janono.Ado.TestCase.Associate</PackageProjectUrl>
+    <SignAssembly>False</SignAssembly>
+    <Description>Automaticity associate automated tests with test cases.</Description>
+    <AssemblyVersion>0.1.0</AssemblyVersion>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
+    <Company>janono</Company>
+    <Copyright>Copyright © Janusz Nowak 2021</Copyright>
+    <Icon>\img\packageIcon.png</Icon>
+    <PackageTags>Azure DevOps;TestCase;Associate;</PackageTags>
+    <RepositoryUrl>https://dev.azure.com/janono-pub/_git/Janono.Ado.TestCase.Associate</RepositoryUrl>
+    <authors>Janusz Nowak</authors>
+    <id>janono.ado.testcase.associate</id>
+    <ApplicationIcon>D:\repos\janono-pub\janono.ado.testcase.associate\janono.ado.testcase.associate\src\janono.ado.testcase.associate\img\packageIcon.ico</ApplicationIcon>
+    <title>janono.ado.testcase.associate</title>
+  </PropertyGroup>
+  
+
+</Project>
