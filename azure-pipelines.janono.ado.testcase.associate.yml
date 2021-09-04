@@ -9,9 +9,19 @@ variables:
   dotNetFramework: 'net6.0'
   dotNetVersion: '6.0.x'
   targetRuntime: 'linux-x64'
+
   
 # Build the app for .NET 6 framework
 steps:
+- task: gittools.gittools.setup-gitversion-task.gitversion/setup@0
+  displayName: gitversion/setup
+  inputs:
+    versionSpec: 5.x
+    includePrerelease: true
+
+- task: gittools.gittools.execute-gitversion-task.gitversion/execute@0
+  displayName: gitversion/execute
+  
 - task: UseDotNet@2
   inputs:
     version: $(dotNetVersion)
