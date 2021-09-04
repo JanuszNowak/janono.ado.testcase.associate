@@ -19,9 +19,7 @@
     <authors>Janusz Nowak</authors>
     <id>janono.ado.testcase.associate</id>
     <Icon>\img\packageIcon.png</Icon>
-    <ApplicationIcon>D:\repos\janono-pub\janono.ado.testcase.associate\janono.ado.testcase.associate\src\janono.ado.testcase.associate\img\packageIcon.ico</ApplicationIcon>
+    <ApplicationIcon>..\janono.ado.testcase.associate\img\packageIcon.ico</ApplicationIcon>
     <title>janono.ado.testcase.associate</title>
   </PropertyGroup>
-  
-
 </Project>
