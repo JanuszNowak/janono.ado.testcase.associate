@@ -1,2 +1,2 @@
-# janono.ado.associate-tests
-Automaticity associate automated tests with test cases
+# janono.ado.testcase.associate.cli
+ janono.ado.testcase.associate.cli
