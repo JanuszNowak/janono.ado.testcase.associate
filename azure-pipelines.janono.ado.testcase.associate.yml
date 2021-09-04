@@ -1,13 +1,14 @@
 trigger:
 - master
+- develop
 
 pool:
   vmImage: ubuntu-latest
 
 variables:
   buildConfiguration: 'Release'
-  dotNetFramework: 'net6.0'
   dotNetVersion: '6.0.x'
+  dotNetFramework: 'net6.0'
   targetRuntime: 'linux-x64'
 
   
@@ -26,13 +27,13 @@ steps:
   inputs:
     version: $(dotNetVersion)
     includePreviewVersions: true
-- script: dotnet build --configuration $(buildConfiguration)
-  displayName: 'Build .NET 6 Application'
 
-- script: dotnet pack  --configuration $(buildConfiguration) --output '$(Build.ArtifactStagingDirectory)'
+- script: dotnet build --configuration $(buildConfiguration)
+  displayName: 'dotnet build'
+
+- script: dotnet pack  --configuration $(buildConfiguration) --include-symbols --output '$(Build.ArtifactStagingDirectory)'
   displayName: 'dotnet pack'
 
-# Package the file and uploads them as an artifact of the build
 - task: PublishPipelineArtifact@1
   inputs:
     targetPath: '$(Build.ArtifactStagingDirectory)' 
