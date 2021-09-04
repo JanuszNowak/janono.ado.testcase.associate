@@ -1,0 +1,34 @@
+trigger:
+- master
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+  buildConfiguration: 'Release'
+  dotNetFramework: 'net6.0'
+  dotNetVersion: '6.0.x'
+  targetRuntime: 'linux-x64'
+  
+# Build the app for .NET 6 framework
+steps:
+- task: UseDotNet@2
+  inputs:
+    version: $(dotNetVersion)
+    includePreviewVersions: true
+- script: dotnet build --configuration $(buildConfiguration)
+  displayName: 'Build .NET 6 Application'
+
+# Publish it as .NET 6 self-contained application for linux runtime
+- task: DotNetCoreCLI@2
+  inputs:
+    command: publish
+    publishWebProjects: True
+    arguments: '--configuration $(BuildConfiguration) --framework $(dotNetFramework) --runtime $(targetRuntime) --self-contained --output $(Build.ArtifactStagingDirectory)'
+    zipAfterPublish: True
+
+# Package the file and uploads them as an artifact of the build
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: '$(Build.ArtifactStagingDirectory)' 
+    artifactName: 'drop'
