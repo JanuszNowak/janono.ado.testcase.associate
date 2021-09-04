@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <Version>0.1.0</Version>    
-    <TargetFrameworks>netstandard2.0;net5.0;net6.0</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net5.0</TargetFrameworks>
     <!-- <TargetFrameworks>net45;net40;net35;net20;netstandard1.0;netstandard1.3;netstandard2.0;net5.0;net6.0</TargetFrameworks> -->
     <!-- <TargetFrameworks>net480;net472;net471;net470;net462;net461;net460;net452;net451;net45;net40;net35;net30;net20;netstandard1.0;netstandard1.1;netstandard1.2;netstandard1.3;netstandard1.4;netstandard1.5;netstandard1.6;netstandard2.0;netstandard2.1;net5.0;net6.0;netcoreapp2.0;netcoreapp2.1;netcoreapp2.2;netcoreapp3.0;netcoreapp3.1</TargetFrameworks>  -->
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
