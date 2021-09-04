@@ -11,8 +11,6 @@ variables:
   dotNetFramework: 'net6.0'
   targetRuntime: 'linux-x64'
 
-  
-# Build the app for .NET 6 framework
 steps:
 - task: gittools.gittools.setup-gitversion-task.gitversion/setup@0
   displayName: gitversion/setup
@@ -22,7 +20,11 @@ steps:
 
 - task: gittools.gittools.execute-gitversion-task.gitversion/execute@0
   displayName: gitversion/execute
-  
+
+- bash: |
+    npm install -g eclint
+    eclint check
+  displayName: "eclint check" 
 - task: UseDotNet@2
   inputs:
     version: $(dotNetVersion)
@@ -36,5 +38,5 @@ steps:
 
 - task: PublishPipelineArtifact@1
   inputs:
-    targetPath: '$(Build.ArtifactStagingDirectory)' 
+    targetPath: '$(Build.ArtifactStagingDirectory)'
     artifactName: 'drop'
