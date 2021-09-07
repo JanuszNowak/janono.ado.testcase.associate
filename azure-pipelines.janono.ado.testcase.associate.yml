@@ -11,6 +11,7 @@ variables:
   dotNetVersion: '6.0.x'
   dotNetFramework: 'net6.0'
   targetRuntime: 'linux-x64'
+  projectKey: 'JanuszNowak_janono.ado.testcase.associate'
 
 steps:
 - task: gittools.gittools.setup-gitversion-task.gitversion/setup@0
@@ -38,7 +39,7 @@ steps:
   inputs:
     SonarCloud: sonarcloud.io
     organization: 'janono-pub'
-    projectKey: '${{replace(variables['Build.Repository.Name'],'/','_')}}'
+    projectKey: '$(projectKey)'
     projectName: '$(BUILD.REPOSITORY.NAME)'
 
 - task: UseDotNet@2
