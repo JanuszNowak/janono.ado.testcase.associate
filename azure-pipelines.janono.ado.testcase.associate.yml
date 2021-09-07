@@ -17,12 +17,13 @@ resources:
   repositories:
     - repository: janono.ado.templates
       type: github
-      name: JanuszNowak/janono.ado.templates
+      name: janono.ado.templates
       ref: refs/heads/master
       endpoint: janusznowak
       trigger:
         branches:
-           include: master
+           include: 
+            - master
 
 jobs:
 - template: src/common/CodeFormatting-Job.yml@janono.ado.templates
