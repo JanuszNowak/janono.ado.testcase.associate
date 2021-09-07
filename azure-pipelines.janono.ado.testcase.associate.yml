@@ -38,7 +38,7 @@ steps:
   inputs:
     SonarCloud: sonarcloud.io
     organization: 'janono-pub'
-    projectKey: '$projectKey'
+    projectKey: ${{replace(variables['BUILD.REPOSITORY.NAME']),'/','_'}}
     projectName: '$(BUILD.REPOSITORY.NAME)'
 
 - task: UseDotNet@2
