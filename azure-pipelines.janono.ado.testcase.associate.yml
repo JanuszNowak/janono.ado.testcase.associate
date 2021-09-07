@@ -81,7 +81,7 @@ jobs:
     displayName: 'dotnet pack'
 
   - task: SonarCloudAnalyze@1
-    enabled: false
+    enabled: true
   - task: SonarSource.sonarcloud.38b27399-a642-40af-bb7d-9971f69712e8.SonarCloudPublish@1
     displayName: 'Publish Quality Gate Result'
 
@@ -97,7 +97,7 @@ jobs:
       packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
       nuGetFeedType: 'internal'
       publishVstsFeed: 'janono.ado.testcase.associate'
-    enabled: true
+    enabled: false
     continueOnError: true
 
   - task: DotNetCoreCLI@2
