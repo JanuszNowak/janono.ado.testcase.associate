@@ -15,13 +15,14 @@ variables:
 
 resources:
   repositories:
-    - repository: composite.templates-ci # alias for repository
+    - repository: janono.ado.templates
       type: github
-      name: janono.ado.templates
+      name: JanuszNowak/janono.ado.templates
       ref: refs/heads/master
       endpoint: janusznowak
 
 jobs:
+- template: src/common/CodeFormatting-Job.yml@janono.ado.templates
 - job: AgentJobMain
   displayName: Agent job - Main
   pool:
