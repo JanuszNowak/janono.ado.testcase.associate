@@ -13,24 +13,34 @@ variables:
   targetRuntime: 'linux-x64'
   projectKey: 'JanuszNowak_janono.ado.testcase.associate'
 
-resources:
-  repositories:
-    - repository: janono.ado.templates
-      type: github
-      name: JanuszNowak/janono.ado.templates
-      source: JanuszNowak/janono.ado.templates
-      ref: refs/heads/master
-      endpoint: janusznowak
-      trigger:
-        branches:
-          include:
-          - releases/*
-          - master
-          exclude:
-          - topic/*
+# resources:
+#   repositories:
+#     - repository: janono.ado.templates
+#       type: github
+#       name: JanuszNowak/janono.ado.templates
+#       source: JanuszNowak/janono.ado.templates
+#       ref: refs/heads/master
+#       endpoint: janusznowak
+#       trigger:
+#         branches:
+#           include:
+#           - releases/*
+#           - master
+#           exclude:
+#           - topic/*
 
 jobs:
-- template: src/common/CodeFormatting-Job.yml@janono.ado.templates
+#- template: src/common/CodeFormatting-Job.yml@janono.ado.templates
+- job: AgentJobMain
+  displayName: Agent job - Code Formatting
+  pool:
+    vmImage: ubuntu-latest
+  steps:
+  - bash: |
+      npm install -g eclint
+      eclint check
+    displayName: "eclint check" 
+
 - job: AgentJobMain
   displayName: Agent job - Main
   pool:
@@ -44,11 +54,6 @@ jobs:
 
   - task: gittools.gittools.execute-gitversion-task.gitversion/execute@0
     displayName: gitversion/execute
-
-  - bash: |
-      npm install -g eclint
-      eclint check
-    displayName: "eclint check" 
 
   - task: PowerShell@2
     inputs:
