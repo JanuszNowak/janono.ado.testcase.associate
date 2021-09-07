@@ -32,7 +32,7 @@ steps:
   inputs:
     SonarCloud: sonarcloud.io
     organization: 'janono-pub'
-    projectKey: '$(BUILD.REPOSITORY.NAME)'
+    projectKey: 'janusznowak_$(BUILD.REPOSITORY.NAME)'
     projectName: '$(BUILD.REPOSITORY.NAME)'
 
 - task: UseDotNet@2
