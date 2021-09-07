@@ -25,6 +25,16 @@ steps:
     npm install -g eclint
     eclint check
   displayName: "eclint check" 
+
+
+- task: SonarSource.sonarcloud.14d9cde6-c1da-4d55-aa01-2965cd301255.SonarCloudPrepare@1
+  displayName: 'Prepare analysis on SonarCloud'
+  inputs:
+    SonarCloud: sonarcloud.io
+    organization: 'janono-pub'
+    projectKey: '$(BUILD.REPOSITORY.NAME)'
+    projectName: '$(BUILD.REPOSITORY.NAME)'
+
 - task: UseDotNet@2
   inputs:
     version: $(dotNetVersion)
@@ -35,6 +45,12 @@ steps:
 
 - script: dotnet pack  --configuration $(buildConfiguration) --include-symbols --output '$(Build.ArtifactStagingDirectory)'
   displayName: 'dotnet pack'
+
+- task: SonarSource.sonarcloud.ce096e50-6155-4de8-8800-4221aaeed4a1.SonarCloudAnalyze@1
+  displayName: 'Run Code Analysis'
+- task: SonarSource.sonarcloud.38b27399-a642-40af-bb7d-9971f69712e8.SonarCloudPublish@1
+  displayName: 'Publish Quality Gate Result'
+
 
 - task: PublishPipelineArtifact@1
   inputs:
