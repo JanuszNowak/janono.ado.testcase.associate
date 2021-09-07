@@ -20,6 +20,9 @@ resources:
       name: JanuszNowak/janono.ado.templates
       ref: refs/heads/master
       endpoint: janusznowak
+      trigger:
+        branches:
+           include: master
 
 jobs:
 - template: src/common/CodeFormatting-Job.yml@janono.ado.templates
