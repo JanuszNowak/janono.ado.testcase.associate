@@ -17,7 +17,7 @@ resources:
   repositories:
     - repository: janono.ado.templates
       type: github
-      name: janono.ado.templates
+      name: JanuszNowak/janono.ado.templates
       ref: refs/heads/master
       endpoint: janusznowak
       trigger:
