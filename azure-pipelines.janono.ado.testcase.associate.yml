@@ -26,13 +26,16 @@ steps:
     eclint check
   displayName: "eclint check" 
 
-
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: 'Get-ChildItem env:'
 - task: SonarSource.sonarcloud.14d9cde6-c1da-4d55-aa01-2965cd301255.SonarCloudPrepare@1
   displayName: 'Prepare analysis on SonarCloud'
   inputs:
     SonarCloud: sonarcloud.io
     organization: 'janono-pub'
-    projectKey: 'janusznowak_$(BUILD.REPOSITORY.NAME)'
+    projectKey: 'JanuszNowak_$(BUILD.REPOSITORY.NAME)'
     projectName: '$(BUILD.REPOSITORY.NAME)'
 
 - task: UseDotNet@2
