@@ -97,7 +97,7 @@ jobs:
       packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
       nuGetFeedType: 'internal'
       publishVstsFeed: 'janono.ado.testcase.associate'
-    enabled: false
+    enabled: true
     continueOnError: true
 
   - task: DotNetCoreCLI@2
