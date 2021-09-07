@@ -36,7 +36,7 @@ steps:
   inputs:
     SonarCloud: sonarcloud.io
     organization: 'janono-pub'
-    projectKey: 'JanuszNowak_$(BUILD.REPOSITORY.NAME)'
+    projectKey: '$(BUILD.REPOSITORY.NAME).Replace('/','_')'
     projectName: '$(BUILD.REPOSITORY.NAME)'
 
 - task: UseDotNet@2
