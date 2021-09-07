@@ -31,7 +31,7 @@ variables:
 
 jobs:
 #- template: src/common/CodeFormatting-Job.yml@janono.ado.templates
-- job: AgentJobMain
+- job: AgentJobCode_Formatting
   displayName: Agent job - Code Formatting
   pool:
     vmImage: ubuntu-latest
