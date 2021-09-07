@@ -13,6 +13,13 @@ variables:
   targetRuntime: 'linux-x64'
   projectKey: 'JanuszNowak_janono.ado.testcase.associate'
 
+resources:
+  repositories:
+    - repository: composite.templates-ci # alias for repository
+      type: github
+      name: janono.ado.templates
+      ref: refs/heads/master
+      endpoint: janusznowak
 
 jobs:
 - job: AgentJobMain
