@@ -22,8 +22,11 @@ resources:
       endpoint: janusznowak
       trigger:
         branches:
-           include: 
-            - master
+          include:
+          - releases/*
+          - master
+          exclude:
+          - topic/*
 
 jobs:
 - template: src/common/CodeFormatting-Job.yml@janono.ado.templates
