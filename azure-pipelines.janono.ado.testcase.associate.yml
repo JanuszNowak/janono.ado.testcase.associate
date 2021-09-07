@@ -27,6 +27,10 @@ steps:
   displayName: "eclint check" 
 - task: UseDotNet@2
   inputs:
+    version: '3.1.0'
+    includePreviewVersions: true
+- task: UseDotNet@2
+  inputs:
     version: $(dotNetVersion)
     includePreviewVersions: true
 
