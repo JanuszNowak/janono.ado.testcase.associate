@@ -30,13 +30,15 @@ steps:
 - task: PowerShell@2
   inputs:
     targetType: 'inline'
-    script: 'Get-ChildItem env:'
+    script: |
+      Get-ChildItem env:
+      $projectKey=$(BUILD.REPOSITORY.NAME).Replace('/','_')
 - task: SonarSource.sonarcloud.14d9cde6-c1da-4d55-aa01-2965cd301255.SonarCloudPrepare@1
   displayName: 'Prepare analysis on SonarCloud'
   inputs:
     SonarCloud: sonarcloud.io
     organization: 'janono-pub'
-    projectKey: '$(BUILD.REPOSITORY.NAME).Replace('/','_')'
+    projectKey: '$projectKey'
     projectName: '$(BUILD.REPOSITORY.NAME)'
 
 - task: UseDotNet@2
