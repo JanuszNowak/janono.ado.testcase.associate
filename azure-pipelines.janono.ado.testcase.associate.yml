@@ -3,6 +3,20 @@ trigger:
 - develop
 - feature/*
 
+pr:
+  branches:
+    include:
+    - master
+    - develop
+    - releases/*
+    exclude:
+    - releases/old*
+  paths:
+    include:
+    - '*' # same as '/' for the repository root
+    exclude:
+    - 'docs/*' # same as 'docs/'
+
 pool:
   vmImage: ubuntu-latest
 
@@ -112,6 +126,22 @@ jobs:
   - script: dotnet pack  --configuration $(buildConfiguration) --include-symbols --output '$(Build.ArtifactStagingDirectory)'
     displayName: 'dotnet pack'
 
+  - task: NuGetCommand@2
+    displayName: 'NuGet push'
+    inputs:
+      command: push
+      nuGetFeedType: external
+      publishFeedCredentials: 'nuget.org_janono.ado.testcase.associate'
+    continueOnError: true
+
+  - task: NuGetCommand@2
+    displayName: 'NuGet push'
+    inputs:
+      command: push
+      nuGetFeedType: external
+      publishFeedCredentials: 'nuget.pkg.github.com_janono.ado.testcase.associate'
+    continueOnError: true
+  
   # - task: SonarCloudAnalyze@1
   #   enabled: true
   # - task: SonarSource.sonarcloud.38b27399-a642-40af-bb7d-9971f69712e8.SonarCloudPublish@1
