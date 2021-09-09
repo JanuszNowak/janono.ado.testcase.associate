@@ -24,3 +24,5 @@
 
 
 ![Azure DevOps coverage](https://img.shields.io/azure-devops/coverage/janono-pub/Janono.Ado.TestCase.Associate/33)
+![Azure DevOps tests](https://img.shields.io/azure-devops/tests/janono-pub/Janono.Ado.TestCase.Associate/33)
+![Nuget](https://img.shields.io/nuget/dt/janono.ado.testcase.associate)
