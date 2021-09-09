@@ -46,6 +46,13 @@ jobs:
   pool:
     vmImage: ubuntu-latest
   steps:
+  - task: gitversion/setup@0
+    displayName: gitversion/setup
+    inputs:
+      versionSpec: 5.x
+      includePrerelease: true
+  - task: gitversion/execute@0
+    displayName: gitversion/execute  
   - task: SonarCloudPrepare@1
     displayName: 'Prepare analysis on SonarCloud'
     inputs:
@@ -72,13 +79,12 @@ jobs:
   pool:
     vmImage: ubuntu-latest
   steps:
-  - task: gittools.gittools.setup-gitversion-task.gitversion/setup@0
+  - task: gitversion/setup@0
     displayName: gitversion/setup
     inputs:
       versionSpec: 5.x
       includePrerelease: true
-
-  - task: gittools.gittools.execute-gitversion-task.gitversion/execute@0
+  - task: gitversion/execute@0
     displayName: gitversion/execute
 
   - task: PowerShell@2
