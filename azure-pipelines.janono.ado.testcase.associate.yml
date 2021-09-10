@@ -132,6 +132,7 @@ jobs:
       command: push
       nuGetFeedType: external
       publishFeedCredentials: 'nuget.org_janono.ado.testcase.associate'
+      allowPackageConflicts: true
     continueOnError: true
 
   - task: NuGetCommand@2
@@ -140,6 +141,7 @@ jobs:
       command: push
       nuGetFeedType: external
       publishFeedCredentials: 'nuget.pkg.github.com_janono.ado.testcase.associate'
+      allowPackageConflicts: true
     continueOnError: true
   
   # - task: SonarCloudAnalyze@1
