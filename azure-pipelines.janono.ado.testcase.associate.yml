@@ -133,6 +133,7 @@ jobs:
       nuGetFeedType: external
       publishFeedCredentials: 'nuget.org_janono.ado.testcase.associate'
       allowPackageConflicts: true
+      includeSymbols: true
     continueOnError: true
 
   - task: NuGetCommand@2
@@ -142,6 +143,7 @@ jobs:
       nuGetFeedType: external
       publishFeedCredentials: 'nuget.pkg.github.com_janono.ado.testcase.associate'
       allowPackageConflicts: true
+      includeSymbols: true
     continueOnError: true
   
   # - task: SonarCloudAnalyze@1
