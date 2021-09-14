@@ -123,7 +123,7 @@ jobs:
   - script: dotnet build --configuration $(buildConfiguration)
     displayName: 'dotnet build'
 
-  - script: dotnet test --configuration $(buildConfiguration) --logger trx
+  - script: dotnet test --configuration $(buildConfiguration) --logger trx --collect "Code Coverage"
     displayName: 'dotnet test'
 
   - script: dotnet pack  --configuration $(buildConfiguration) --include-symbols --output '$(Build.ArtifactStagingDirectory)'
