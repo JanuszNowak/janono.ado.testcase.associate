@@ -125,6 +125,12 @@ jobs:
 
   - script: dotnet test --configuration $(buildConfiguration) --logger trx --collect "Code Coverage"
     displayName: 'dotnet test'
+  - task: PublishTestResults@2
+    displayName: 'Publish Test Results **/TestResults/*.trx'
+    inputs:
+      testResultsFormat: VSTest
+      testResultsFiles: '**/TestResults/*.trx'
+      mergeTestResults: true
 
   - script: dotnet pack  --configuration $(buildConfiguration) --include-symbols --output '$(Build.ArtifactStagingDirectory)'
     displayName: 'dotnet pack'
