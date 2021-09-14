@@ -124,7 +124,7 @@ jobs:
   - script: dotnet build --configuration $(buildConfiguration)
     displayName: 'dotnet build'
 
-  - script: dotnet test --configuration $(buildConfiguration) --logger trx /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura
+  - script: dotnet test --configuration $(buildConfiguration) --logger trx --collect "Code Coverage" /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura
     displayName: 'dotnet test'
 
   - task: PublishTestResults@2
@@ -153,6 +153,7 @@ jobs:
       allowPackageConflicts: true
       includeSymbols: true
     continueOnError: true
+    enabled: false
 
   - task: NuGetCommand@2
     displayName: 'NuGet push'
@@ -163,6 +164,7 @@ jobs:
       allowPackageConflicts: true
       includeSymbols: true
     continueOnError: true
+    enabled: false
   
   # - task: SonarCloudAnalyze@1
   #   enabled: true
@@ -174,6 +176,7 @@ jobs:
     inputs:
       checkWarnings: true
       checkCoverage: true
+    enabled: false
 
   - task: PublishPipelineArtifact@1
     inputs:
