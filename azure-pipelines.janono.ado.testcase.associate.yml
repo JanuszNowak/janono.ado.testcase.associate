@@ -48,7 +48,8 @@ jobs:
 - job: AgentJobCode_Formatting
   displayName: Agent job - Code Formatting
   pool:
-    vmImage: ubuntu-latest
+    #vmImage: ubuntu-latest
+    vmImage: windows-latest
   steps:
   - bash: |
       npm install -g eclint
