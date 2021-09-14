@@ -48,8 +48,7 @@ jobs:
 - job: AgentJobCode_Formatting
   displayName: Agent job - Code Formatting
   pool:
-    #vmImage: ubuntu-latest
-    vmImage: windows-latest
+    vmImage: ubuntu-latest
   steps:
   - bash: |
       npm install -g eclint
@@ -92,7 +91,8 @@ jobs:
 - job: AgentJobMain
   displayName: Agent job - Main
   pool:
-    vmImage: ubuntu-latest
+    #vmImage: ubuntu-latest
+    vmImage: windows-latest
   steps:
   - task: gitversion/setup@0
     displayName: gitversion/setup
