@@ -168,6 +168,11 @@ jobs:
   # - task: SonarSource.sonarcloud.38b27399-a642-40af-bb7d-9971f69712e8.SonarCloudPublish@1
   #   displayName: 'Publish Quality Gate Result'
 
+  - task: mspremier.BuildQualityChecks.QualityChecks-task.BuildQualityChecks@8
+    displayName: 'Check build quality'
+    inputs:
+      checkWarnings: true
+      checkCoverage: true
 
   - task: PublishPipelineArtifact@1
     inputs:
