@@ -139,7 +139,7 @@ jobs:
     displayName: 'Publish code coverage'
     inputs:
       codeCoverageTool: Cobertura
-      summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/*.coverage'
+      summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/*coverage.cobertura.xml'
 
 
   - script: dotnet pack  --configuration $(buildConfiguration) --include-symbols --output '$(Build.ArtifactStagingDirectory)'
