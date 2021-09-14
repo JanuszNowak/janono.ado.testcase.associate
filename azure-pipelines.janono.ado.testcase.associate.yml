@@ -137,7 +137,8 @@ jobs:
   - task: PublishCodeCoverageResults@1
     displayName: 'Publish code coverage'
     inputs:
-      summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/*.coverage'
+      codeCoverageTool: Cobertura
+      summaryFileLocation: '$(System.DefaultWorkingDirectory)/TestResults/**/*.coverage'
 
 
   - script: dotnet pack  --configuration $(buildConfiguration) --include-symbols --output '$(Build.ArtifactStagingDirectory)'
