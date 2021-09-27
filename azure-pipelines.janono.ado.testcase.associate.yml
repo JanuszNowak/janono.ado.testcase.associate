@@ -26,7 +26,8 @@ variables:
   dotNetFramework: 'net6.0'
   targetRuntime: 'linux-x64'
   projectKey: 'JanuszNowak_janono.ado.testcase.associate'
-
+  system.debug: true
+  
 # resources:
 #   repositories:
 #     - repository: janono.ado.templates
