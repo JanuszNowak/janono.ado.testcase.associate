@@ -10,6 +10,7 @@ variables:
   dotNetVersion: '6.0.x'
   dotNetFramework: 'net6.0'
   targetRuntime: 'linux-x64'
+  system.debug: true
 
 steps:
 - task: gittools.gittools.setup-gitversion-task.gitversion/setup@0
