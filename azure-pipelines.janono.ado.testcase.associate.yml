@@ -142,7 +142,7 @@ jobs:
       summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/*coverage.cobertura.xml'
 
 
-  - script: dotnet pack  --configuration $(buildConfiguration) --include-symbols --output '$(Build.ArtifactStagingDirectory)'
+  - script: dotnet pack  --configuration $(buildConfiguration) --include-symbols --output '$(Build.ArtifactStagingDirectory)' /p:Version=$(GitVersion.SemVer)
     displayName: 'dotnet pack'
 
   - task: NuGetCommand@2
