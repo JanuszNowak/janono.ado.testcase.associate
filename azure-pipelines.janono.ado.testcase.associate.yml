@@ -102,6 +102,11 @@ jobs:
   - task: gitversion/execute@0
     displayName: gitversion/execute
 
+  - task: DownloadSecureFile@1
+    displayName: 'Download secure file'
+    inputs:
+      secureFile: janono.snk
+
   - task: PowerShell@2
     inputs:
       targetType: 'inline'
