@@ -121,7 +121,7 @@ jobs:
       version: $(dotNetVersion)
       includePreviewVersions: true
 
-  - script: dotnet build --configuration $(buildConfiguration) /p:Version=$(GitVersion.SemVer) /p:AssemblyVersion=$(GitVersion.AssemblySemVer) /p:FileVersion=$(GitVersion.AssemblySemFileVer)
+  - script: dotnet build --configuration $(buildConfiguration) /p:Version=$(GitVersion.FullSemVer) /p:AssemblyVersion=$(GitVersion.AssemblySemVer) /p:FileVersion=$(GitVersion.AssemblySemFileVer)
     displayName: 'dotnet build'
 
   - script: dotnet test --configuration $(buildConfiguration) --logger trx --collect:"XPlat Code Coverage"
@@ -142,7 +142,7 @@ jobs:
       summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/*coverage.cobertura.xml'
 
 
-  - script: dotnet pack  --configuration $(buildConfiguration) --include-symbols --output '$(Build.ArtifactStagingDirectory)'  /p:Version=$(GitVersion.SemVer) /p:AssemblyVersion=$(GitVersion.AssemblySemVer) /p:FileVersion=$(GitVersion.AssemblySemFileVer)
+  - script: dotnet pack  --configuration $(buildConfiguration) --include-symbols --output '$(Build.ArtifactStagingDirectory)'  /p:Version=$(GitVersion.FullSemVer) /p:AssemblyVersion=$(GitVersion.AssemblySemVer) /p:FileVersion=$(GitVersion.AssemblySemFileVer)
     displayName: 'dotnet pack'
 
   - task: NuGetCommand@2
