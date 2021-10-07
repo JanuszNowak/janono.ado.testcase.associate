@@ -16,7 +16,8 @@
     <Company>janono</Company>
     <Copyright>Copyright © Janusz Nowak 2021</Copyright>
     <PackageTags>Azure DevOps;TestCase;Associate;</PackageTags>
-    <RepositoryUrl>https://dev.azure.com/janono-pub/_git/Janono.Ado.TestCase.Associate</RepositoryUrl>
+    <RepositoryUrl>https://github.com/JanuszNowak/janono.ado.testcase.associate</RepositoryUrl>
+    <!-- <RepositoryUrl>https://dev.azure.com/janono-pub/_git/Janono.Ado.TestCase.Associate</RepositoryUrl> -->
     <authors>Janusz Nowak</authors>
     <id>janono.ado.testcase.associate</id>
     <Icon>\img\packageIcon.png</Icon>

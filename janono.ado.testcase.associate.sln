@@ -9,7 +9,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{DD36
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "janono.ado.testcase.associate", "src\janono.ado.testcase.associate\janono.ado.testcase.associate.csproj", "{6E24189A-7210-4A97-A50D-836450A926C7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestProjectNUnit3", "samples\TestProjectNUnit3\TestProjectNUnit3.csproj", "{320CF15D-4A57-4336-A96D-60A733994ED7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "janono.ado.testcase.associate.unittests", "test\janono.ado.testcase.associate.unittests\janono.ado.testcase.associate.unittests.csproj", "{50B89FCF-C473-4B04-A65E-8B95EDC23385}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{06B806FA-3DCB-4756-89D1-0A01E6C79859}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,17 +23,17 @@ Global
 		{6E24189A-7210-4A97-A50D-836450A926C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E24189A-7210-4A97-A50D-836450A926C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E24189A-7210-4A97-A50D-836450A926C7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{320CF15D-4A57-4336-A96D-60A733994ED7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{320CF15D-4A57-4336-A96D-60A733994ED7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{320CF15D-4A57-4336-A96D-60A733994ED7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{320CF15D-4A57-4336-A96D-60A733994ED7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50B89FCF-C473-4B04-A65E-8B95EDC23385}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50B89FCF-C473-4B04-A65E-8B95EDC23385}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50B89FCF-C473-4B04-A65E-8B95EDC23385}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50B89FCF-C473-4B04-A65E-8B95EDC23385}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{6E24189A-7210-4A97-A50D-836450A926C7} = {C72CA4D2-5297-46F5-A037-371D5000844D}
-		{320CF15D-4A57-4336-A96D-60A733994ED7} = {DD36C5E8-21CC-4232-9619-BE834039B53B}
+		{50B89FCF-C473-4B04-A65E-8B95EDC23385} = {06B806FA-3DCB-4756-89D1-0A01E6C79859}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5992F2C5-BF00-4B89-93B4-FECEFEA80FEB}
