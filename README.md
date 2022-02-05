@@ -19,7 +19,7 @@
 
 [![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=JanuszNowak_janono.ado.testcase.associate)](https://sonarcloud.io/dashboard?id=JanuszNowak_janono.ado.testcase.associate)
 
-[![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-white.svg)](https://sonarcloud.io/dashboard?id=JanuszNowak_janono.ado.testcase.associate)
+[![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-white.svg)](https://sonarcloud.io/dashboard?id=JanuszNowak_janono.ado.testcase.associate) [![Join the chat at https://gitter.im/JanuszNowak/janono.ado.testcase.associate](https://badges.gitter.im/JanuszNowak/janono.ado.testcase.associate.svg)](https://gitter.im/JanuszNowak/janono.ado.testcase.associate?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 
 ![Azure DevOps coverage](https://img.shields.io/azure-devops/coverage/janono-pub/Janono.Ado.TestCase.Associate/33)
