@@ -219,3 +219,10 @@ jobs:
       publishFeedCredentials: 'nuget.org_janono.ado.testcase.associate'
     enabled: false
     continueOnError: true
+
+  - task: GitHubRelease@1
+    displayName: 'GitHub release (create)'
+    inputs:
+      gitHubConnection: 'GitHub connection 1'
+      isDraft: true
+      isPreRelease: true
