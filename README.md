@@ -10,7 +10,6 @@ Extension consists of 2 components
 * [Nuget package](https://www.nuget.org/packages/janono.ado.testcase.associate/) [janono.ado.testcase.associate](https://github.com/JanuszNowak/janono.ado.testcase.associate) that containse decoration attribute, to mark test and organization [![NuGet](https://img.shields.io/nuget/v/janono.ado.testcase.associate.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/janono.ado.testcase.associate/) 
 * CLI that is executing actions like assocation [janono.ado.testcase.associate.cli](https://github.com/JanuszNowak/janono.ado.testcase.associate.cli)
 
-<!-- ![](/img/packageIcon.png) -->
 ![janono.ado.testcase.associate](/img/end2.png)
  
 
@@ -136,10 +135,20 @@ namespace ExampleTestProject
     -?, -h, --help                                  Show help and usage information
 ```
 
-* Pass parameters for CLI 
-    * --authMethod "PAT" 
-    * [PAT (personal access token)](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate)
-    * --path where you store
+* Pass parameters for CLI
+    * --authMethod PAT or oAuth(in comming future)
+    * --authMethod "PAT" [PAT (personal access token)](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate)
+    * --path to dll file with test for association
+    * --action "List" for scan dll test assembly and check if need to update assocication, or "Associate" for association test medthods to test cases also cover update case
+
+* Example --action "List" ```janono.ado.testcase.associate.cli.exe --authMethod PAT --authValue [yours PAT] --path D:\ExampleTestProject\bin\Release\net6.0\ExampleTestProject.dll --action List```
+![janono.ado.testcase.associate](/img/cli_List.png)
+
+* Example --action "Associate" ```janono.ado.testcase.associate.cli.exe --authMethod PAT --authValue [yours PAT] --path D:\ExampleTestProject\bin\Release\net6.0\ExampleTestProject.dll --action Associate```
+![janono.ado.testcase.associate](/img/cli_Associate.png)
+
+* Result, now on test case workitem on "Associated Automation" tab you will see automatically associated automation with will be executed [run automated tests from test plans](https://docs.microsoft.com/en-us/azure/devops/test/run-automated-tests-from-test-hub?view=azure-devops).
+![janono.ado.testcase.associate](/img/end_result.png)
 
 
 <!-- normalny you 
