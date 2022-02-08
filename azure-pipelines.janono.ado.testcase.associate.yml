@@ -155,13 +155,24 @@ jobs:
   - task: NuGetCommand@2
     displayName: 'NuGet push'
     inputs:
+      command: 'push'
+      packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
+      nuGetFeedType: 'internal'
+      publishVstsFeed: 'edf511c4-94c9-49f0-bf3b-f33cb94288b6'
+      allowPackageConflicts: true
+    continueOnError: true
+    enabled: true
+
+  - task: NuGetCommand@2
+    displayName: 'NuGet push'
+    inputs:
       command: push
       nuGetFeedType: external
       publishFeedCredentials: 'nuget.org_janono.ado.testcase.associate'
       allowPackageConflicts: true
       includeSymbols: true
     continueOnError: true
-    enabled: false
+    enabled: true
 
   - task: NuGetCommand@2
     displayName: 'NuGet push'
@@ -172,7 +183,7 @@ jobs:
       allowPackageConflicts: true
       includeSymbols: true
     continueOnError: true
-    enabled: false
+    enabled: true
   
   # - task: SonarCloudAnalyze@1
   #   enabled: true
@@ -208,3 +219,10 @@ jobs:
       publishFeedCredentials: 'nuget.org_janono.ado.testcase.associate'
     enabled: false
     continueOnError: true
+
+  - task: GitHubRelease@1
+    displayName: 'GitHub release (create)'
+    inputs:
+      gitHubConnection: 'GitHub connection 1'
+      isDraft: true
+      isPreRelease: true
