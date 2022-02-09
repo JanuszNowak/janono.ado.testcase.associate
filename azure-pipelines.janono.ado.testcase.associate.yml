@@ -15,19 +15,19 @@ pr:
     include:
     - '*' # same as '/' for the repository root
     exclude:
-    - 'docs/*' # same as 'docs/'
+    - docs/*   # same as 'docs/'
 
 pool:
   vmImage: ubuntu-latest
 
 variables:
-  buildConfiguration: 'Release'
-  dotNetVersion: '6.0.x'
-  dotNetFramework: 'net6.0'
-  targetRuntime: 'linux-x64'
-  projectKey: 'JanuszNowak_janono.ado.testcase.associate'
+  buildConfiguration: Release
+  dotNetVersion: 6.0.x
+  dotNetFramework: net6.0
+  targetRuntime: linux-x64
+  projectKey: JanuszNowak_janono.ado.testcase.associate
   system.debug: true
-  
+
 # resources:
 #   repositories:
 #     - repository: janono.ado.templates
@@ -54,7 +54,18 @@ jobs:
   - bash: |
       npm install -g eclint
       eclint check
-    displayName: "eclint check" 
+    displayName: eclint check
+
+- job: AgentJob_PreCommit
+  displayName: Agent job - PreCommit
+  pool:
+    vmImage: ubuntu-latest
+  steps:
+  - script: |
+      pip install pre-commit
+      pre-commit --version
+      pre-commit run --all-files
+    displayName: Execture pre-commit
 
 - job: AgentJobSonar
   displayName: Agent job - Sonar
@@ -67,26 +78,26 @@ jobs:
       versionSpec: 5.x
       includePrerelease: true
   - task: gitversion/execute@0
-    displayName: gitversion/execute  
+    displayName: gitversion/execute
   - task: SonarCloudPrepare@1
-    displayName: 'Prepare analysis on SonarCloud'
+    displayName: Prepare analysis on SonarCloud
     inputs:
       SonarCloud: sonarcloud.io
-      organization: 'janusznowak-github'
+      organization: janusznowak-github
       scannerMode: CLI
       configMode: manual
-      cliProjectKey: 'JanuszNowak_janono.ado.testcase.associate'
+      cliProjectKey: JanuszNowak_janono.ado.testcase.associate
       cliProjectName: JanuszNowak/janono.ado.testcase.associate
-      cliProjectVersion: '$(Build.BuildNumber)'
+      cliProjectVersion: $(Build.BuildNumber)
       extraProperties: |
-        # Additional properties that will be passed to the scanner, 
+        # Additional properties that will be passed to the scanner,
         # Put one key=value per line, example:
         # sonar.exclusions=**/*.bin
                 sonar.branch.name=$(Build.SourceBranchName)
   - task: SonarCloudAnalyze@1
-    displayName: 'Run Code Analysis'
+    displayName: Run Code Analysis
   - task: SonarCloudPublish@1
-    displayName: 'Publish Quality Gate Result'
+    displayName: Publish Quality Gate Result
 
 
 - job: AgentJobMain
@@ -105,13 +116,13 @@ jobs:
 
   - task: DownloadSecureFile@1
     name: janonosnk
-    displayName: 'Download secure file'
+    displayName: Download secure file
     inputs:
       secureFile: janono.snk
 
   - task: PowerShell@2
     inputs:
-      targetType: 'inline'
+      targetType: inline
       script: |
         Get-ChildItem env:
 
@@ -129,69 +140,69 @@ jobs:
       includePreviewVersions: true
 
   - script: dotnet build --configuration $(buildConfiguration) /p:Version=$(GitVersion.FullSemVer) /p:AssemblyVersion=$(GitVersion.AssemblySemVer) /p:FileVersion=$(GitVersion.AssemblySemFileVer) /m /p:AssemblyOriginatorKeyFile=$(janonosnk.secureFilePath) /p:SignAssembly=true
-    displayName: 'dotnet build'
+    displayName: dotnet build
 
   - script: dotnet test --configuration $(buildConfiguration) --logger trx --collect:"XPlat Code Coverage"
-  #--collect "Code Coverage" /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura  
-    displayName: 'dotnet test'
+  #--collect "Code Coverage" /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura
+    displayName: dotnet test
 
   - task: PublishTestResults@2
-    displayName: 'Publish Test Results **/TestResults/*.trx'
+    displayName: Publish Test Results **/TestResults/*.trx
     inputs:
       testResultsFormat: VSTest
       testResultsFiles: '**/TestResults/*.trx'
       mergeTestResults: true
 
   - task: PublishCodeCoverageResults@1
-    displayName: 'Publish code coverage'
+    displayName: Publish code coverage
     inputs:
       codeCoverageTool: Cobertura
-      summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/*coverage.cobertura.xml'
+      summaryFileLocation: $(System.DefaultWorkingDirectory)/**/*coverage.cobertura.xml
 
 
   - script: dotnet pack  --configuration $(buildConfiguration) --include-symbols --output '$(Build.ArtifactStagingDirectory)'  /p:Version=$(GitVersion.FullSemVer) /p:AssemblyVersion=$(GitVersion.AssemblySemVer) /p:FileVersion=$(GitVersion.AssemblySemFileVer) /m /p:AssemblyOriginatorKeyFile=$(janonosnk.secureFilePath) /p:SignAssembly=true
-    displayName: 'dotnet pack'
+    displayName: dotnet pack
 
   - task: NuGetCommand@2
-    displayName: 'NuGet push'
+    displayName: NuGet push
     inputs:
-      command: 'push'
-      packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
-      nuGetFeedType: 'internal'
-      publishVstsFeed: 'edf511c4-94c9-49f0-bf3b-f33cb94288b6'
+      command: push
+      packagesToPush: $(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg
+      nuGetFeedType: internal
+      publishVstsFeed: edf511c4-94c9-49f0-bf3b-f33cb94288b6
       allowPackageConflicts: true
     continueOnError: true
     enabled: true
 
   - task: NuGetCommand@2
-    displayName: 'NuGet push'
+    displayName: NuGet push
     inputs:
       command: push
       nuGetFeedType: external
-      publishFeedCredentials: 'nuget.org_janono.ado.testcase.associate'
+      publishFeedCredentials: nuget.org_janono.ado.testcase.associate
       allowPackageConflicts: true
       includeSymbols: true
     continueOnError: true
     enabled: true
 
   - task: NuGetCommand@2
-    displayName: 'NuGet push'
+    displayName: NuGet push
     inputs:
       command: push
       nuGetFeedType: external
-      publishFeedCredentials: 'nuget.pkg.github.com_janono.ado.testcase.associate'
+      publishFeedCredentials: nuget.pkg.github.com_janono.ado.testcase.associate
       allowPackageConflicts: true
       includeSymbols: true
     continueOnError: true
     enabled: true
-  
+
   # - task: SonarCloudAnalyze@1
   #   enabled: true
   # - task: SonarSource.sonarcloud.38b27399-a642-40af-bb7d-9971f69712e8.SonarCloudPublish@1
   #   displayName: 'Publish Quality Gate Result'
 
   - task: mspremier.BuildQualityChecks.QualityChecks-task.BuildQualityChecks@8
-    displayName: 'Check build quality'
+    displayName: Check build quality
     inputs:
       checkWarnings: true
       checkCoverage: true
@@ -199,30 +210,30 @@ jobs:
 
   - task: PublishPipelineArtifact@1
     inputs:
-      targetPath: '$(Build.ArtifactStagingDirectory)'
-      artifactName: 'drop'
+      targetPath: $(Build.ArtifactStagingDirectory)
+      artifactName: drop
 
   - task: DotNetCoreCLI@2
     inputs:
-      command: 'push'
-      packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
-      nuGetFeedType: 'internal'
-      publishVstsFeed: 'janono.ado.testcase.associate'
+      command: push
+      packagesToPush: $(Build.ArtifactStagingDirectory)/*.nupkg
+      nuGetFeedType: internal
+      publishVstsFeed: janono.ado.testcase.associate
     enabled: false
     continueOnError: true
 
   - task: DotNetCoreCLI@2
     inputs:
-      command: 'push'
-      packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
-      nuGetFeedType: 'external'
-      publishFeedCredentials: 'nuget.org_janono.ado.testcase.associate'
+      command: push
+      packagesToPush: $(Build.ArtifactStagingDirectory)/*.nupkg
+      nuGetFeedType: external
+      publishFeedCredentials: nuget.org_janono.ado.testcase.associate
     enabled: false
     continueOnError: true
 
   - task: GitHubRelease@1
-    displayName: 'GitHub release (create)'
+    displayName: GitHub release (create)
     inputs:
-      gitHubConnection: 'GitHub connection 1'
+      gitHubConnection: GitHub connection 1
       isDraft: true
       isPreRelease: true

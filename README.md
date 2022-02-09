@@ -7,13 +7,13 @@ janono.ado.testcase.associate is an extension for automatic association of test 
 Extension was created as current aproach for association is [manual activity](https://docs.microsoft.com/en-us/azure/devops/test/associate-automated-test-with-test-case?view=azure-devops) activty for each test case with can be very time consuming, susceptible to mistakes (as each manual activity), time costly in maintenance. Current aporach also requires [Visual Studio](https://visualstudio.microsoft.com/pl/) with is not needed in case of using extension.
 
 Extension consists of 2 components
-* [Nuget package](https://www.nuget.org/packages/janono.ado.testcase.associate/) [janono.ado.testcase.associate](https://github.com/JanuszNowak/janono.ado.testcase.associate) that containse decoration attribute, to mark test and organization [![NuGet](https://img.shields.io/nuget/v/janono.ado.testcase.associate.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/janono.ado.testcase.associate/) 
+* [Nuget package](https://www.nuget.org/packages/janono.ado.testcase.associate/) [janono.ado.testcase.associate](https://github.com/JanuszNowak/janono.ado.testcase.associate) that containse decoration attribute, to mark test and organization [![NuGet](https://img.shields.io/nuget/v/janono.ado.testcase.associate.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/janono.ado.testcase.associate/)
 * CLI that is executing actions like assocation [janono.ado.testcase.associate.cli](https://github.com/JanuszNowak/janono.ado.testcase.associate.cli)
 
 ![janono.ado.testcase.associate](/img/end2.png)
- 
 
-<!-- 
+
+<!--
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=JanuszNowak_janono.ado.testcase.associate&metric=bugs)](https://sonarcloud.io/dashboard?id=JanuszNowak_janono.ado.testcase.associate)
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=JanuszNowak_janono.ado.testcase.associate&metric=code_smells)](https://sonarcloud.io/dashboard?id=JanuszNowak_janono.ado.testcase.associate)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=JanuszNowak_janono.ado.testcase.associate&metric=coverage)](https://sonarcloud.io/dashboard?id=JanuszNowak_janono.ado.testcase.associate)
@@ -43,7 +43,7 @@ Extension consists of 2 components
 
 * Create Test Porject or open existing, supported any with [MSTest](https://github.com/microsoft/testfx), [NUnit](https://nunit.org/), [xUnit](https://github.com/xunit/xunit) writen in [.NET Core](https://github.com/dotnet/core) or [.NET Framework](https://dotnet.microsoft.com/en-us/download/dotnet-framework) version.
 
-* Add latest nuget package "janono.ado.testcase.associate" from https://www.nuget.org/packages/janono.ado.testcase.associate/ [![NuGet](https://img.shields.io/nuget/v/janono.ado.testcase.associate.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/janono.ado.testcase.associate/). 
+* Add latest nuget package "janono.ado.testcase.associate" from https://www.nuget.org/packages/janono.ado.testcase.associate/ [![NuGet](https://img.shields.io/nuget/v/janono.ado.testcase.associate.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/janono.ado.testcase.associate/).
 
 <!-- ![janono.ado.testcase.associate](/img/5_add_nuget.png) -->
 
@@ -59,7 +59,7 @@ namespace ExampleTestProject
     [janono.ado.testcase.associate.Organization("janono-pub")] //<---
     public class UnitTest1
     {
-        [TestMethod]        
+        [TestMethod]
         public void TestMethod1()
         {
             //yours test method content
@@ -94,7 +94,7 @@ namespace ExampleTestProject
 }
 ```
 
-* Optionaly add using statment namespace "using janono.ado.testcase.associate" to use shor name for atrributes 
+* Optionaly add using statment namespace "using janono.ado.testcase.associate" to use shor name for atrributes
 ```[janono.ado.testcase.associate.Organization("janono-pub")] ->  [Organization("janono-pub")]```
 ```[janono.ado.testcase.associate.Organization("janono-pub")] ->  [TestCase(5)]```
 ```cs
@@ -151,8 +151,8 @@ namespace ExampleTestProject
 ![janono.ado.testcase.associate](/img/end_result.png)
 
 
-<!-- normalny you 
-would open test exproler from visual studio and then find corepoding test, 
+<!-- normalny you
+would open test exproler from visual studio and then find corepoding test,
 then you would connect from Team Explorer to yours Azure DevOps organization,
 Then you will query for specitc test case Id for ith oyu would like to assocate or run query to find it.
 All that you will repat or update  for each test case for with you have automation.  -->
@@ -161,7 +161,7 @@ All that you will repat or update  for each test case for with you have automati
 
 ## Features planned
 * Add support for for [Azure devops server](https://azure.microsoft.com/pl-pl/services/devops/server/).
-* Add [Azure DevOps Marketplace](https://marketplace.visualstudio.com/) extension with dedicated build task for making automatic association. 
+* Add [Azure DevOps Marketplace](https://marketplace.visualstudio.com/) extension with dedicated build task for making automatic association.
 * Generate CLI for multiple platforms.
 
 
