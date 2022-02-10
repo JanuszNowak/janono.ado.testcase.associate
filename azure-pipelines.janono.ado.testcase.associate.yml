@@ -172,7 +172,7 @@ jobs:
       publishVstsFeed: edf511c4-94c9-49f0-bf3b-f33cb94288b6
       allowPackageConflicts: true
     continueOnError: true
-    enabled: true
+    enabled: false
 
   - task: NuGetCommand@2
     displayName: NuGet push
@@ -194,7 +194,7 @@ jobs:
       allowPackageConflicts: true
       includeSymbols: true
     continueOnError: true
-    enabled: true
+    enabled: false
 
   # - task: SonarCloudAnalyze@1
   #   enabled: true
