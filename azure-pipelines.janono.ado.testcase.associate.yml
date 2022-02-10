@@ -240,7 +240,7 @@ jobs:
       target: $(Build.SourceVersion)
       #tagSource: gitTag
       tagSource: userSpecifiedTag
-      tag: '$(Build.SourceVersion)'
+      tag: $(Build.SourceVersion)
       assets: |
         $(Build.ArtifactStagingDirectory)/*
       isDraft: true
