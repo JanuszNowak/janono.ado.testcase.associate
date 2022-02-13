@@ -2,6 +2,11 @@
 janono.ado.testcase.associate
 [![Build Status](https://dev.azure.com/janono-pub/Janono.Ado.TestCase.Associate/_apis/build/status/janono.ado.testcase.associate-ci%20dotnet%206.0?branchName=master)](https://dev.azure.com/janono-pub/Janono.Ado.TestCase.Associate/_build/latest?definitionId=33&branchName=master)
 
+janono.ado.testcase.associate.cli
+ [![Build Status](https://dev.azure.com/janono-pub/Janono.Ado.TestCase.Associate/_apis/build/status/janono.ado.testcase.associate.cli-ci?branchName=master)](https://dev.azure.com/janono-pub/Janono.Ado.TestCase.Associate/_build/latest?definitionId=34&branchName=master)
+
+
+
 janono.ado.testcase.associate is an extension for automatic association of test methods from code to [Test Cases](https://docs.microsoft.com/en-us/azure/devops/test/create-a-test-plan?view=azure-devops) in [Azure DevOps](https://azure.microsoft.com/en-us/services/devops/) [Test Plans](https://azure.microsoft.com/en-us/services/devops/test-plans/).
 
 Extension was created as current approach for association is [manual activity](https://docs.microsoft.com/en-us/azure/devops/test/associate-automated-test-with-test-case?view=azure-devops).For each test case with can be very time consuming, susceptible to mistakes (as each manual activity), time costly in maintenance. Current approach also requires [Visual Studio](https://visualstudio.microsoft.com/pl/) with is not needed in case of using extension.
