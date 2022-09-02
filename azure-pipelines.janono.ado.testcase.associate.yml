@@ -61,6 +61,11 @@ jobs:
   pool:
     vmImage: ubuntu-latest
   steps:
+  - task: UseDotNet@2
+    inputs:
+      version: $(dotNetVersion)
+      includePreviewVersions: true
+
   - script: |
       pip install pre-commit
       pre-commit --version
