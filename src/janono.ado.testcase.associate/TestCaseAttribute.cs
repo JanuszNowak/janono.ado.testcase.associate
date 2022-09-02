@@ -23,15 +23,27 @@ namespace janono.ado.testcase.associate
     public class OrganizationAttribute : Attribute
     {
         public readonly string OrganizationName;
+        public readonly string AreaPath;
 
         public OrganizationAttribute(string name)
         {
             this.OrganizationName = name;
         }
 
+        public OrganizationAttribute(string name, string areaPath)
+        {
+            this.OrganizationName = name;
+            this.AreaPath = areaPath;
+        }
+
         public virtual string Name
         {
             get { return OrganizationName; }
+        }
+
+        public virtual string Path
+        {
+            get { return AreaPath; }
         }
     }
 }
