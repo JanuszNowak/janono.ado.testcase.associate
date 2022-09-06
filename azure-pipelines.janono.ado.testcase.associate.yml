@@ -22,7 +22,7 @@ pool:
 
 variables:
   buildConfiguration: Release
-  dotNetVersion: 6.0.x
+  dotNetVersion: 6.0.100
   dotNetFramework: net6.0
   targetRuntime: linux-x64
   projectKey: JanuszNowak_janono.ado.testcase.associate
