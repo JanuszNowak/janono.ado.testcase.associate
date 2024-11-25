@@ -22,7 +22,7 @@ pool:
 
 variables:
   buildConfiguration: Release
-  dotNetVersion: 6.0.x
+  dotNetVersion: 6.0.100
   dotNetFramework: net6.0
   targetRuntime: linux-x64
   projectKey: JanuszNowak_janono.ado.testcase.associate
@@ -61,6 +61,11 @@ jobs:
   pool:
     vmImage: ubuntu-latest
   steps:
+  - task: UseDotNet@2
+    inputs:
+      version: $(dotNetVersion)
+      includePreviewVersions: true
+
   - script: |
       pip install pre-commit
       pre-commit --version
@@ -234,7 +239,7 @@ jobs:
   - task: GitHubRelease@1
     displayName: GitHub release (create)
     inputs:
-      gitHubConnection: GitHub connection 1
+      gitHubConnection: github.com_JanuszNowak
       repositoryName: $(Build.Repository.Name)
       action: create
       target: $(Build.SourceVersion)
